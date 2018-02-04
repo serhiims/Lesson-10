@@ -47,9 +47,9 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float deltaX = (i.uv.x + _SinTime.w * _Speed);
+				float2 delta = float2(i.uv.x + _SinTime.w * _Speed, i.uv.y);
 				half4 main = tex2D(_MainTex, i.uv);
-				half4 secondary = tex2D(_SecondaryTex, deltaX);
+				half4 secondary = tex2D(_SecondaryTex, delta);
 			    half4 output = main + secondary;
 			    output.a = main.a;
 			   	return output;
